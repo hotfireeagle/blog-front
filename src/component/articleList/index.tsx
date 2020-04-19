@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import AppContext from '../../context/context'
 import fetchData from '../../util/fetch'
+import LoadingWrapper from '../loadingWrapper'
 import * as actions from './action'
 
 const ArticleList: React.FC<any> = () => {
@@ -12,6 +13,7 @@ const ArticleList: React.FC<any> = () => {
   console.log('rende me')
   const { apiResponse } = moduleState
   const articles = apiResponse && apiResponse.result // 文章列表数据
+  console.log('文章列表为', articles)
 
   useEffect(() => {
     if (articles) return // 存在数据的话就不执行实际的effect了
@@ -20,11 +22,14 @@ const ArticleList: React.FC<any> = () => {
     })
   }, [])
 
-  if (articles) {
-    return <h1>ah</h1>
-  } else {
-    return <h1>loading</h1>
-  }
+  return (
+    <LoadingWrapper
+      loading={true}
+      height="100vh"
+    >
+      <h1>hi</h1>
+    </LoadingWrapper>
+  )
 }
 
 export default ArticleList
