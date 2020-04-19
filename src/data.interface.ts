@@ -1,3 +1,22 @@
+// 每篇文章对象数据的建模
+export interface IArticle {
+  id: number
+  title: string
+  tags: Array<number>
+}
+
+// 后端中api/article/query接口所返回的数据类型建模
+export interface IArticleQueryResponse {
+  result: Array<IArticle>
+  total: number
+}
+
+// 文章列表模块所维护的状态
+export interface IModuleArticleList {
+  apiResponse: IArticleQueryResponse
+  loading: boolean
+}
+
 // 应用context中所维护的数据类型
 export interface IAppState {
   articleList: IModuleArticleList
@@ -7,7 +26,8 @@ export interface IAppState {
 // 整个应用的初始数据，用在useReducer上面
 export const initialState: IAppState = {
   articleList: {
-    apiResponse: {}
+    apiResponse: { result: [], total: 0 },
+    loading: false,
   }
 }
 
@@ -23,10 +43,6 @@ export const defaultAppContext: IAppContext = {
 
 export interface IReducerParam {
   [key: string]: any
-}
-
-export interface IModuleArticleList {
-  apiResponse: any
 }
 
 // 整个应用的action类型

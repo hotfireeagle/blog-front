@@ -5,6 +5,8 @@ export const articleList = (moduleState: IModuleArticleList, action: IAction) =>
   switch (action.type) {
     case actions.setArticleListResponse:
       return { ...moduleState, apiResponse: action.data }
+    case actions.setLoading:
+      return { ...moduleState, loading: action.data }
     default:
       return moduleState
   }

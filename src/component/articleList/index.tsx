@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import AppContext from '../../context/context'
 import fetchData from '../../util/fetch'
 import LoadingWrapper from '../loadingWrapper'
@@ -11,23 +12,32 @@ const ArticleList: React.FC<any> = () => {
   const { dispatch } = context
 
   console.log('rende me')
-  const { apiResponse } = moduleState
+  const { apiResponse, loading } = moduleState
   const articles = apiResponse && apiResponse.result // 文章列表数据
   console.log('文章列表为', articles)
 
   useEffect(() => {
-    if (articles) return // 存在数据的话就不执行实际的effect了
+    dispatch({ type: actions.setLoading, data: true })
     fetchData('/api/article/query', 'post').then(res => {
       dispatch({ type: actions.setArticleListResponse, data: res })
+      dispatch({ type: actions.setLoading, data: false })
     })
   }, [])
 
   return (
     <LoadingWrapper
-      loading={true}
+      loading={loading}
       height="100vh"
     >
-      <h1>hi</h1>
+      <div className='articleListWrapper'>
+        {
+          articles.map(articleObj => (
+            <div className='articleItem' key={articleObj.id}>
+              <Link to={`/articleDetail/${articleObj.id}`}>{articleObj.title}</Link>
+            </div>
+          ))
+        }
+      </div>
     </LoadingWrapper>
   )
 }
