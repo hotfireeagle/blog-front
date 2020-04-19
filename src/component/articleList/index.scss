@@ -1,0 +1,23 @@
+.articleListWrapper {
+  .articleItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #000;
+    font-size: 14px;
+    .title {
+      text-decoration: none;
+      font-family: KateXMainBold;
+      border-bottom: 1px dashed #000;
+      &:active, &:hover, &:visited {
+        color: #000;
+      }
+    }
+    .flexg {
+      flex-grow: 1;
+    }
+  }
+  .articleItem + .articleItem {
+    margin-top: 6px;
+  }
+}

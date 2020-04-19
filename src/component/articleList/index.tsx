@@ -4,6 +4,7 @@ import AppContext from '../../context/context'
 import fetchData from '../../util/fetch'
 import LoadingWrapper from '../loadingWrapper'
 import * as actions from './action'
+import './index.scss'
 
 const ArticleList: React.FC<any> = () => {
   const context = useContext(AppContext)
@@ -33,7 +34,9 @@ const ArticleList: React.FC<any> = () => {
         {
           articles.map(articleObj => (
             <div className='articleItem' key={articleObj.id}>
-              <Link to={`/articleDetail/${articleObj.id}`}>{articleObj.title}</Link>
+              <Link to={`/articleDetail/${articleObj.id}`} className='title'>{articleObj.title}</Link>
+              <span className='flexg' />
+              <span className='date'>{articleObj.date}</span>
             </div>
           ))
         }

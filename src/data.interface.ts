@@ -3,6 +3,7 @@ export interface IArticle {
   id: number
   title: string
   tags: Array<number>
+  date: string
 }
 
 // 后端中api/article/query接口所返回的数据类型建模
