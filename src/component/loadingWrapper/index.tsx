@@ -13,7 +13,7 @@ const LoadingWrapper: React.FC<IProps> = props => {
     {
       props.loading ?
       <div className='loadingWrapper' style={{ height: props.height }}>
-        <img className='img' src='http://img2.imgtn.bdimg.com/it/u=3381596572,1571513985&fm=214&gp=0.jpg' />
+        <img className='img' style={{ maxHeight: props.height }} src='http://img2.imgtn.bdimg.com/it/u=3381596572,1571513985&fm=214&gp=0.jpg' />
       </div>
       :
       props.children

@@ -1,0 +1,20 @@
+.tagWrapperComponent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  .tagItem {
+    cursor: pointer;
+    border-bottom: 1px dashed #000;
+  }
+  .tagItem+.tagItem {
+    margin-left: 10px;
+  }
+  .activeTagItem {
+    color: #4284f4;
+    font-weight: 600;
+  }
+  .tag {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
