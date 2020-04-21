@@ -22,3 +22,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
+.pageWrapper {
+  max-width: 666px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.pageWrapper * {
+  max-width: 666px;
+  overflow-x: auto;
+}

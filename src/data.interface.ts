@@ -76,3 +76,11 @@ export interface IArticleQuery {
   pageSize?: number
   tagId?: number
 }
+
+export interface IArticleDetail {
+  id: number
+  title: string
+  content: string
+  date: string
+  tags: Array<ITopic>
+}
